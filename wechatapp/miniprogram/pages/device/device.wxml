@@ -1,0 +1,70 @@
+<!--pages/device/device.wxml-->
+<view class="container">
+  <!-- 连接状态 -->
+  <view class="status-card">
+    <view class="status-header">
+      <text class="status-title">设备连接状态</text>
+      <view class="status-indicator {{isConnected ? 'connected' : 'disconnected'}}"></view>
+    </view>
+    
+    <view class="status-info" wx:if="{{isConnected}}">
+      <text class="info-text">已连接到: {{deviceIP}}</text>
+      <text class="info-text">连接时间: {{connectTime}}</text>
+    </view>
+    
+    <view class="status-info" wx:else>
+      <text class="info-text">未连接设备</text>
+      <text class="info-hint">请点击下方按钮连接设备</text>
+    </view>
+  </view>
+
+  <!-- 连接控制 -->
+  <view class="control-card">
+    <view class="input-group">
+      <text class="label">设备IP地址</text>
+      <input class="input" placeholder="例如: 127.0.0.1:8180" value="{{deviceIP}}" bindinput="onIPInput" />
+    </view>
+    
+    <view class="button-group">
+      <button class="btn-primary" bindtap="onConnect" disabled="{{isConnecting}}">
+        {{isConnecting ? '连接中...' : (isConnected ? '重新连接' : '连接设备')}}
+      </button>
+      
+      <button class="btn-secondary" bindtap="onDisconnect" disabled="{{!isConnected}}">
+        断开连接
+      </button>
+    </view>
+    
+    <button class="btn-scan" bindtap="onScanQRCode">
+      扫描二维码连接
+    </button>
+  </view>
+
+  <!-- 设备信息 -->
+  <view class="info-card" wx:if="{{isConnected && deviceInfo}}">
+    <text class="card-title">设备信息</text>
+    <view class="info-row">
+      <text class="info-label">冷冻室温度</text>
+      <text class="info-value">{{deviceInfo.freezer_temp}}°C</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">工作模式</text>
+      <text class="info-value">{{deviceInfo.mode}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">运行时间</text>
+      <text class="info-value">{{deviceInfo.uptime}}秒</text>
+    </view>
+  </view>
+
+  <!-- 操作日志 -->
+  <view class="log-card">
+    <text class="card-title">操作日志</text>
+    <scroll-view class="log-list" scroll-y="true">
+      <view class="log-item" wx:for="{{logs}}" wx:key="index">
+        <text class="log-time">{{item.time}}</text>
+        <text class="log-content">{{item.content}}</text>
+      </view>
+    </scroll-view>
+  </view>
+</view>

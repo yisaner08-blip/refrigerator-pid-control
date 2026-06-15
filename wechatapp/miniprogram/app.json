@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/device/device",
+    "pages/control/control",
+    "pages/chart/chart"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "冰箱PID控制",
+    "navigationBarBackgroundColor": "#2b5aed"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#2b5aed",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/device/device",
+        "text": "设备",
+        "iconPath": "images/device.png",
+        "selectedIconPath": "images/device-active.png"
+      },
+      {
+        "pagePath": "pages/control/control",
+        "text": "控制",
+        "iconPath": "images/control.png",
+        "selectedIconPath": "images/control-active.png"
+      },
+      {
+        "pagePath": "pages/chart/chart",
+        "text": "曲线",
+        "iconPath": "images/chart.png",
+        "selectedIconPath": "images/chart-active.png"
+      }
+    ]
+  }
+}

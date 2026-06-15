@@ -1,0 +1,52 @@
+<!--pages/chart/chart.wxml-->
+<view class="container">
+  <!-- 时间范围选择 -->
+  <view class="time-selector">
+    <view class="time-item {{timeRange === '1h' ? 'active' : ''}}" bindtap="onTimeRange" data-range="1h">
+      1小时
+    </view>
+    <view class="time-item {{timeRange === '6h' ? 'active' : ''}}" bindtap="onTimeRange" data-range="6h">
+      6小时
+    </view>
+    <view class="time-item {{timeRange === '24h' ? 'active' : ''}}" bindtap="onTimeRange" data-range="24h">
+      24小时
+    </view>
+    <view class="time-item {{timeRange === '7d' ? 'active' : ''}}" bindtap="onTimeRange" data-range="7d">
+      7天
+    </view>
+  </view>
+
+  <!-- 温度曲线图 -->
+  <view class="chart-card">
+    <text class="card-title">温度曲线</text>
+    <view class="chart-container">
+      <canvas canvas-id="tempChart" id="tempChart" class="chart-canvas"></canvas>
+    </view>
+  </view>
+
+  <!-- 温度统计 -->
+  <view class="stats-card">
+    <text class="card-title">温度统计</text>
+    
+    <view class="stats-grid">
+      <view class="stats-item">
+        <text class="stats-label">冷冻室最高</text>
+        <text class="stats-value high">{{freezerHigh}}°C</text>
+      </view>
+      <view class="stats-item">
+        <text class="stats-label">冷冻室最低</text>
+        <text class="stats-value low">{{freezerLow}}°C</text>
+      </view>
+      <view class="stats-item">
+        <text class="stats-label">冷冻室平均</text>
+        <text class="stats-value avg">{{freezerAvg}}°C</text>
+      </view>
+    </view>
+    
+  </view>
+
+  <!-- 刷新按钮 -->
+  <view class="refresh-card">
+    <button class="btn-refresh" bindtap="onRefresh">刷新数据</button>
+  </view>
+</view>

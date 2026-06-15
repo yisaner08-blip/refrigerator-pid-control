@@ -1,0 +1,110 @@
+<!--pages/pid/pid.wxml-->
+<view class="container">
+  <!-- 当前PID参数 -->
+  <view class="pid-card">
+    <text class="card-title">当前PID参数</text>
+    
+    <view class="pid-display">
+      <view class="pid-item">
+        <text class="pid-label">Kp (比例系数)</text>
+        <text class="pid-value">{{kp}}</text>
+      </view>
+      <view class="pid-item">
+        <text class="pid-label">Ki (积分系数)</text>
+        <text class="pid-value">{{ki}}</text>
+      </view>
+      <view class="pid-item">
+        <text class="pid-label">Kd (微分系数)</text>
+        <text class="pid-value">{{kd}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- PID参数调整 -->
+  <view class="adjust-card">
+    <text class="card-title">调整PID参数</text>
+    
+    <view class="slider-group">
+      <view class="slider-item">
+        <text class="slider-label">Kp: {{newKp}}</text>
+        <slider 
+          min="0" 
+          max="10" 
+          step="0.1" 
+          value="{{newKp}}" 
+          bindchanging="onKpChange"
+          activeColor="#2b5aed"
+        />
+      </view>
+      
+      <view class="slider-item">
+        <text class="slider-label">Ki: {{newKi}}</text>
+        <slider 
+          min="0" 
+          max="1" 
+          step="0.01" 
+          value="{{newKi}}" 
+          bindchanging="onKiChange"
+          activeColor="#07c160"
+        />
+      </view>
+      
+      <view class="slider-item">
+        <text class="slider-label">Kd: {{newKd}}</text>
+        <slider 
+          min="0" 
+          max="5" 
+          step="0.1" 
+          value="{{newKd}}" 
+          bindchanging="onKdChange"
+          activeColor="#ff9800"
+        />
+      </view>
+    </view>
+  </view>
+
+  <!-- 预设参数 -->
+  <view class="preset-card">
+    <text class="card-title">预设参数</text>
+    
+    <view class="preset-list">
+      <view class="preset-item" bindtap="onLoadPreset" data-preset="default">
+        <text class="preset-name">默认参数</text>
+        <text class="preset-value">Kp=2.0 Ki=0.5 Kd=1.0</text>
+      </view>
+      
+      <view class="preset-item" bindtap="onLoadPreset" data-preset="aggressive">
+        <text class="preset-name">激进模式</text>
+        <text class="preset-value">Kp=5.0 Ki=1.0 Kd=2.0</text>
+      </view>
+      
+      <view class="preset-item" bindtap="onLoadPreset" data-preset="conservative">
+        <text class="preset-name">保守模式</text>
+        <text class="preset-value">Kp=1.0 Ki=0.2 Kd=0.5</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="button-group">
+    <button class="btn-primary" bindtap="onApply">应用参数</button>
+    <button class="btn-secondary" bindtap="onReset">重置</button>
+  </view>
+
+  <!-- 说明 -->
+  <view class="help-card">
+    <text class="card-title">参数说明</text>
+    <view class="help-item">
+      <text class="help-label">Kp (比例)</text>
+      <text class="help-desc">响应速度，越大响应越快，但可能超调</text>
+    </view>
+    <view class="help-item">
+      <text class="help-label">Ki (积分)</text>
+      <text class="help-desc">消除稳态误差，越大消除越快，但可能振荡</text>
+    </view>
+    <view class="help-item">
+      <text class="help-label">Kd (微分)</text>
+      <text class="help-desc">抑制超调，越大抑制越强，但可能响应慢</text>
+    </view>
+  </view>
+</view>

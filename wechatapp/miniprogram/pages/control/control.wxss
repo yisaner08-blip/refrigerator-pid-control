@@ -1,0 +1,188 @@
+/* pages/control/control.wxss */
+.container {
+  padding: 20rpx;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.temp-card {
+  display: flex;
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.1);
+}
+
+.temp-item {
+  flex: 1;
+  text-align: center;
+}
+
+.temp-label {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.temp-value {
+  display: block;
+  font-size: 56rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.temp-value.normal {
+  color: #07c160;
+}
+
+.temp-value.warning {
+  color: #ee0a24;
+}
+
+.temp-setpoint {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.temp-divider {
+  width: 2rpx;
+  background: #f0f0f0;
+  margin: 0 30rpx;
+}
+
+.card-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.mode-card, .setpoint-card, .status-card, .quick-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.1);
+}
+
+.mode-options {
+  display: flex;
+  gap: 20rpx;
+}
+
+.mode-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+  border: 2rpx solid #ddd;
+  border-radius: 12rpx;
+  transition: all 0.3s;
+}
+
+.mode-item.active {
+  border-color: #2b5aed;
+  background: #2b5aed;
+  color: white;
+}
+
+.mode-icon {
+  display: block;
+  font-size: 48rpx;
+  margin-bottom: 10rpx;
+}
+
+.mode-name {
+  display: block;
+  font-size: 28rpx;
+}
+
+.setpoint-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.setpoint-label {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.setpoint-control {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.btn-minus, .btn-plus {
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 50%;
+  background: #f5f5f5;
+  font-size: 36rpx;
+  padding: 0;
+}
+
+.setpoint-value {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  min-width: 100rpx;
+  text-align: center;
+}
+
+.status-grid {
+  display: flex;
+  gap: 20rpx;
+}
+
+.status-item {
+  flex: 1;
+  text-align: center;
+}
+
+.status-label {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.status-indicator {
+  padding: 15rpx;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+}
+
+.status-indicator.on {
+  background: #07c160;
+  color: white;
+}
+
+.status-indicator.off {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 20rpx;
+}
+
+.btn-action {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  background: #2b5aed;
+  color: white;
+  font-size: 28rpx;
+}

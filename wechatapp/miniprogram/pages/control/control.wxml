@@ -1,0 +1,84 @@
+<!--pages/control/control.wxml-->
+<view class="container">
+  <!-- 温度显示 -->
+  <view class="temp-card">
+    <view class="temp-item">
+      <text class="temp-label">冷冻室</text>
+      <text class="temp-value {{freezerTemp > -15 ? 'warning' : 'normal'}}">{{freezerTemp}}°C</text>
+      <text class="temp-setpoint">设定: {{freezerSetpoint}}°C</text>
+    </view>
+    
+  </view>
+
+  <!-- 工作模式 -->
+  <view class="mode-card">
+    <text class="card-title">工作模式</text>
+    <view class="mode-options">
+      <view class="mode-item {{currentMode === 0 ? 'active' : ''}}" bindtap="onSetMode" data-mode="0">
+        <text class="mode-icon">❄️</text>
+        <text class="mode-name">制冷</text>
+      </view>
+      <view class="mode-item {{currentMode === 1 ? 'active' : ''}}" bindtap="onSetMode" data-mode="1">
+        <text class="mode-icon">🔥</text>
+        <text class="mode-name">除霜</text>
+      </view>
+      <view class="mode-item {{currentMode === 2 ? 'active' : ''}}" bindtap="onSetMode" data-mode="2">
+        <text class="mode-icon">💚</text>
+        <text class="mode-name">节能</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 温度设置 -->
+  <view class="setpoint-card">
+    <text class="card-title">温度设置</text>
+    
+    <view class="setpoint-item">
+      <text class="setpoint-label">冷冻室温度</text>
+      <view class="setpoint-control">
+        <button class="btn-minus" bindtap="onAdjustTemp" data-zone="freezer" data-delta="{{-1}}">-</button>
+        <text class="setpoint-value">{{freezerSetpoint}}°C</text>
+        <button class="btn-plus" bindtap="onAdjustTemp" data-zone="freezer" data-delta="{{1}}">+</button>
+      </view>
+    </view>
+    
+  </view>
+
+  <!-- 设备状态 -->
+  <view class="status-card">
+    <text class="card-title">设备状态</text>
+    <view class="status-grid">
+      <view class="status-item">
+        <text class="status-label">压缩机</text>
+        <view class="status-indicator {{compressorOn ? 'on' : 'off'}}">
+          <text>{{compressorOn ? '运行' : '停止'}}</text>
+        </view>
+      </view>
+      <view class="status-item">
+        <text class="status-label">风扇</text>
+        <view class="status-indicator {{fanOn ? 'on' : 'off'}}">
+          <text>{{fanOn ? '运行' : '停止'}}</text>
+        </view>
+      </view>
+      <view class="status-item">
+        <text class="status-label">除霜</text>
+        <view class="status-indicator {{defrostOn ? 'on' : 'off'}}">
+          <text>{{defrostOn ? '开启' : '关闭'}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="quick-card">
+    <text class="card-title">快捷操作</text>
+    <view class="quick-actions">
+      <button class="btn-action" bindtap="onQuickAction" data-action="defrost">
+        ❄️ 立即除霜
+      </button>
+      <button class="btn-action" bindtap="onQuickAction" data-action="refresh">
+        🔄 刷新状态
+      </button>
+    </view>
+  </view>
+</view>
